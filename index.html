@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endless Spending Simulator</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom scrollbar for webkit browsers */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    html, body {
+      overscroll-behavior-y: contain; /* Prevent pull-to-refresh on mobile */
+      height: 100%; /* Ensure body takes full height */
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1a202c; /* bg-gray-900 */
+      color: #e2e8f0; /* text-gray-200 */
+    }
+    
+    /* Modal Animation */
+    @keyframes modal-appear {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .animate-modal-appear {
+      animation: modal-appear 0.3s forwards;
+    }
+
+    /* Slower pulse animation for VIP badges */
+    .animation-duration-slow {
+        animation-duration: 3s; /* Adjust as needed */
+    }
+
+
+    .shadow-top {
+      box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Battle Log Specific Colors (Can be overridden by Tailwind utilities) */
+    .battle-log-player { color: #63b3ed; /* blue-400 */ }
+    .battle-log-enemy { color: #f56565; /* red-500 */ }
+    .battle-log-damage { color: #f6ad55; /* orange-400 */ }
+    .battle-log-heal { color: #48bb78; /* green-500 */ }
+    .battle-log-buff { color: #4299e1; /* blue-500 */ }
+    .battle-log-debuff { color: #b794f4; /* purple-400 */ }
+    .battle-log-system { color: #a0aec0; /* gray-500 */ }
+
+    #root {
+      height: 100%;
+      min-height: 100vh; /* Fallback for older browsers or specific scenarios */
+      display: flex; /* Allow child to take full height */
+      flex-direction: column; /* Allow child to take full height */
+    }
+    /* Ensure the main app container takes full height within #root */
+    #root > div { /* This targets the main div rendered by App.tsx */
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.2",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "uuid": "https://esm.sh/uuid@^11.1.0",
+    "react-router": "https://esm.sh/react-router@^7.6.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

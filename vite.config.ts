@@ -4,8 +4,8 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     
     // GitHub Pages 部署時的基礎路徑
-    // 使用 spentsimul 倉庫，所以 base 路徑是 '/spentsimul/'
-    const base = mode === 'production' ? '/spentsimul/' : '/';
+    // 使用 dooyts.github.io 倉庫，所以 base 路徑是 '/'
+    const base = '/';
     
     return {
       base: base,

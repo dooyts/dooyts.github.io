@@ -8,11 +8,14 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // Can often work with tsc emit if outDir is used. Consider "node" or "nodenext" if issues.
     "allowImportingTsExtensions": true,
+    "resolveJsonModule": true, // Good to have for importing JSON files
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    // "noEmit": true, // Changed: Allow emitting JS files
+    "outDir": "./dist", // Added: Specify output directory
+    "sourceMap": true, // Added: Generate source maps for debugging
     "allowJs": true,
     "jsx": "react-jsx",
 
@@ -21,10 +24,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
+    "noUncheckedSideEffectImports": true, // Keeping this, good practice
 
     "paths": {
       "@/*" :  ["./*"]
     }
-  }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"], // Ensure this correctly points to your source files
+  "exclude": ["node_modules", "dist"] // Exclude the output directory
 }

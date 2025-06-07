@@ -1,22 +1,17 @@
-import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     
     // GitHub Pages 部署時的基礎路徑
-    const base = mode === 'production' ? '/spentsimul/' : '/';
+    // 如果使用 dooyts.github.io 倉庫，base 路徑應該是 '/'
+    const base = '/';
     
     return {
       base: base,
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
       },
       server: {
         host: true,   // 允許區網訪問

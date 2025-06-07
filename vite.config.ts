@@ -3,24 +3,25 @@ import { defineConfig, loadEnv } from 'vite';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     
-    // GitHub Pages 部署時的基礎路徑
-    // 使用 dooyts.github.io 倉庫，所以 base 路徑是 '/'
-    const base = '/';
-    
     return {
-      base: base,
+      base: '/',
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
       server: {
-        host: true,   // 允許區網訪問
-        port: 5173    // 可自訂端口
+        host: true,
+        port: 5173
       },
       build: {
         outDir: 'dist',
         assetsDir: 'assets',
-        sourcemap: false
+        sourcemap: false,
+        rollupOptions: {
+          output: {
+            manualChunks: undefined,
+          }
+        }
       }
     };
 });
